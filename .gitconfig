@@ -1,0 +1,17 @@
+[core]
+	editor = code --wait
+[user]
+	name = Mickaël Derriey
+[credential]
+	helper = manager
+[alias]
+	st = status
+	co = checkout
+	cob = checkout -b
+	df = diff
+	up = pull --rebase --prune
+	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+	bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+	branch-name = rev-parse --abbrev-ref HEAD
+	pushu = "!git push -u ${1-origin} ${2-$(git branch-name)}"
+	undo = reset HEAD^ --mixed
